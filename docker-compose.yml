@@ -2,7 +2,34 @@ version: "3.9"
 
 services:
 
-    backends.test-service:
+    mongodb:
+        container_name: mongodb
+        image: mongo
+        restart: always
+        env_file: db.env
+        ports:
+            - 27017:27017
+
+    mongo-express:
+        container_name: mongo-express
+        image: mongo-express
+        restart: always
+        env_file: db.env
+        ports:
+            - "8081:8081"   
+        depends_on:
+            - "mongodb"     
+
+    client-spa:
+        container_name: client-spa
+        image: client-spa
+        build:
+            context: src/frontends/client-spa
+            dockerfile: Dockerfile
+        ports:
+            - "4000:80"
+
+    test-service:
         container_name: test-service
         image: test-service
         build:
@@ -10,13 +37,4 @@ services:
             dockerfile: Dockerfile
         restart: always
         ports:
-            - "4000:8080"
-
-    frontends.client-spa:
-        container_name: client-spa
-        image: client-spa
-        build:
-            context: src/frontends/client-spa
-            dockerfile: Dockerfile
-        ports:
-            - "4001:80"
+            - "5000:8080"
