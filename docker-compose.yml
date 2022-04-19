@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+
+    backends.test-service:
+        container_name: test-service
+        image: test-service
+        build:
+            context: src/backends/test-service
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+            - "4000:8080"
+
+    frontends.client-spa:
+        container_name: client-spa
+        image: client-spa
+        build:
+            context: src/frontends/client-spa
+            dockerfile: Dockerfile
+        ports:
+            - "4001:80"
