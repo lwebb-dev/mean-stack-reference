@@ -1,0 +1,1 @@
+docker volume rm mean-stack-reference_mongodb-data
