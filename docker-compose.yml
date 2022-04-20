@@ -6,7 +6,6 @@ services:
         container_name: mongodb
         image: mongo
         restart: always
-        env_file: db.env
         ports:
             - 27017:27017
 
@@ -14,7 +13,6 @@ services:
         container_name: mongo-express
         image: mongo-express
         restart: always
-        env_file: db.env
         ports:
             - "8081:8081"   
         depends_on:
@@ -38,3 +36,5 @@ services:
         restart: always
         ports:
             - "5000:8080"
+        depends_on:
+            - "mongodb"     

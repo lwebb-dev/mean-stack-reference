@@ -24,11 +24,6 @@ This [Article](https://www.mongodb.com/mean-stack) by MongoDB offers a good prim
 
 ## Configure Development Environment
 
-### MongoDB Environment Variables
-
-1. Copy `db.env.txt` from the templates directory into the root directy. 
-2. Rename the file to `db.env` by removing the `.txt` extension.
-
 ### Start Docker Containers Using Docker Compose
 
 To build and run the docker containers all at once (and in the correct order), simply run:
